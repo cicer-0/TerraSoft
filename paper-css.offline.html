@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Acta de Evaluación</title>
+    <link rel="stylesheet" href="https://unpkg.com/paper-css/paper.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      body {
+        -webkit-print-color-adjust: exact;
+        font-family: "Arial", sans-serif;
+        font-size: 12px;
+      }
+      body.A4 .sheet {
+        padding-top: 10mm;
+      }
+      .title {
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        text-decoration: underline;
+      }
+      .header-image {
+        width: 70%;
+        height: auto;
+      }
+
+      .sub-header-text {
+        text-align: center;
+        font-size: 12px;
+        margin-top: 0px;
+      }
+
+      .paragraph {
+        margin-top: 5px;
+        font-size: 14px;
+        line-height: 1.6;
+        text-align: justify;
+      }
+
+      .bold {
+        font-weight: bold;
+      }
+      .red {
+        color: red;
+      }
+
+      .right {
+        float: right;
+      }
+
+      .italic {
+        font-style: italic;
+      }
+
+      .section-title {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 10px 0;
+      }
+
+      .table-header {
+        border: 1px solid black;
+        padding: 4px;
+        text-align: center;
+        font-size: 11px;
+        background-color: #b8cce3;
+        text-transform: uppercase;
+      }
+
+      .table-data {
+        border: 1px solid black;
+        padding: 4px;
+        text-align: center;
+        font-size: 11px;
+      }
+
+      .table tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      .table tbody tr:hover {
+        background-color: #f1f1f1;
+      }
+
+      .section {
+        margin-bottom: 10px;
+      }
+      .signature-section {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 50px;
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+
+      .signature-block {
+        text-align: center;
+        width: 40%;
+      }
+
+      .dotted-line {
+        font-family: "Courier", monospace;
+        font-size: 16px;
+        letter-spacing: 3px;
+        margin-bottom: 5px;
+      }
+
+      .signature-label {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: bold;
+      }
+      .observations-title {
+        text-align: center;
+        font-size: 11px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        text-decoration: underline;
+      }
+
+      .observations-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 8px;
+      }
+
+      .observations-table th,
+      .observations-table td {
+        border: 1px solid black;
+        padding: 1.5px;
+        text-align: center;
+        vertical-align: middle;
+      }
+
+      .observations-table th {
+        background-color: #f0f0f0;
+        font-weight: bold;
+      }
+
+      .observations-table tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      .observations-table tbody tr:nth-child(odd) {
+        background-color: #ffffff;
+      }
+
+      .observations-table .highlight {
+        background-color: #ffdddd;
+      }
+
+      .chart-section {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+      }
+
+      .chart-table {
+        width: 40%;
+      }
+
+      .chart-table h3 {
+        font-size: 12px;
+    text-decoration: underline;
+    font-weight: bold;
+      }
+
+      .chart-table th,
+      .chart-table td {
+        border: 2px solid black; /* Borde más grueso */
+        padding: 8px;
+        text-align: center;
+      }
+
+      .chart-table th {
+        background-color: #b8cce3;
+        font-weight: bold;
+      }
+
+      .chart-table tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      .chart-table .total-row {
+        font-weight: bold;
+        background-color: #b8cce3;
+      }
+
+      .chart-canvas-container {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .chart-canvas-container h4 {
+        text-align: center;
+        font-size: 16px;
+      }
+
+      .chart-canvas {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+
+      @media print {
+        /* Evitar que el gráfico se corte al imprimirse */
+        .chart-section {
+          page-break-inside: avoid;
+        }
+
+        /* Para asegurar que los gráficos se impriman correctamente */
+        .chart-canvas {
+          width: 100%;
+          height: 250px;
+        }
+      }
+.keys-section h3{
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+      .table-style {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .table-style th,
+      .table-style td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+      }
+
+      .table-style th {
+        background-color: #b8cce3;
+        font-weight: bold;
+      }
+
+      .table-style tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      .total-row {
+        font-weight: bold;
+        background-color: #b8cce3;
+      }
+      @media print {
+        body.A4 {
+          size: A4;
+          margin: 0;
+        }
+        .observations-table {
+          page-break-inside: avoid; /* Evitar saltos de página dentro de la tabla */
+        }
+
+        thead {
+          display: table-header-group; /* Fija la cabecera de la tabla en cada página */
+        }
+
+        .observations-title {
+          page-break-before: always; /* Título de las observaciones en cada nueva hoja */
+        }
+
+        tbody tr {
+          page-break-inside: avoid; /* Evita dividir filas a través de varias páginas */
+        }
+
+        .sheet {
+          page-break-before: always; /* Crea una nueva hoja para cada sección cuando sea necesario */
+          margin-bottom: 10mm; /* Esto da un margen inferior, como se solicitó */
+        }
+      }
+    </style>
+  </head>
+  <body class="A4">
+    <section class="sheet padding-25mm">
+      <div class="header">
+        <img
+          src="assets/header_image.png"
+          alt="Logo Ministerio de Salud"
+          class="header-image"
+        />
+      </div>
+      <p class="sub-header-text">
+        "Decenio de la Igualdad de Oportunidades para Mujeres y Hombres"
+      </p>
+
+      <h1 class="title">ACTA DE EVALUACIÓN N°220-2024-DIRIS-OS-AM-GMPJ</h1>
+
+      <div class="section">
+        <p>
+          <span class="bold">ESTABLECIMIENTO DE SALUD:</span>
+          <span class="red">C.S. SAN MIGUEL</span>
+          <span class="right"><span class="bold">Fecha:</span> 19/1/2024</span>
+        </p>
+        <p class="paragraph">
+          Se inicia el acompañamiento al médico supervisor de UDR en el Proceso
+          de Control Prestacional Posterior de los Formatos Únicos de Atención e
+          historias clínicas en la Oficina de Seguros del Establecimiento de
+          Salud C.S. SAN MIGUEL programado para el mes de Enero a las IPRESS de
+          la jurisdicción de DIRIS Lima Centro.
+        </p>
+      </div>
+
+      <div class="section">
+        <p class="section-title">a) ANTECEDENTES</p>
+        <p class="paragraph">
+          La realización del Proceso de Control Prestacional Preventivo se
+          enmarcará en el cumplimiento del
+          <span class="bold"
+            >convenio entre el SIS, FISSAL y la DIRIS Lima Centro</span
+          >
+          para el financiamiento de las prestaciones brindadas a sus asegurados,
+          dentro de la
+          <span class="bold">cláusula octava: Obligaciones del prestador</span>
+          numeral 8.17.
+          <br />
+          <span class="italic">
+            "Permitir y otorgar las facilidades a LAS IAFAS, para que realicen
+            los procesos de control prestacional, auditoría médica, promoción de
+            sus deberes y derechos, protección al asegurado, monitoreo,
+            supervisión y seguimiento a las transferencias financieras, y otras
+            que correspondan".
+          </span>
+        </p>
+        <p class="paragraph">
+          Considerando lo descrito en la Directiva Administrativa N°
+          001-2016-SIS-GREP-V.03
+          <span class="italic"
+            >"Directiva que establece el Proceso de Control Presencial Posterior
+            de las Prestaciones de Salud Financiadas por el Seguro Integral de
+            Salud"</span
+          >, aprobada mediante
+          <span class="bold">Resolución Jefatural N.° 006-2016/SIS</span> para
+          la evaluación de los FUAs e historia clínica.
+        </p>
+      </div>
+
+      <div class="section">
+        <p class="section-title">b) DE LA PRESENTACIÓN INICIAL</p>
+        <p class="paragraph">
+          Habiéndose informado adecuadamente al Jefe/Director del EESS o
+          responsable delegado por éste, se da inicio al acompañamiento del
+          Proceso de Control Presencial Posterior de las prestaciones de Salud.
+        </p>
+      </div>
+
+      <div class="section">
+        <p class="section-title">
+          c) FASE I: Evaluación de la conformidad del registro del Formato Único
+          de Atención
+        </p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="table-header" rowspan="2">
+                N° DE PRESTACIONES CONFORMES FUA
+              </th>
+              <th class="table-header" colspan="2">RECHAZOS TOTAL FUA</th>
+            </tr>
+            <tr>
+              <th class="table-header">N° DE RECHAZOS POR CRITERIO I-1</th>
+              <th class="table-header">N° RECHAZOS POR CRITERIOS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="table-data">68</td>
+              <td class="table-data">2</td>
+              <td class="table-data">0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section">
+        <p class="section-title">
+          d) FASE II: Evaluación de la conformidad de la prestación de salud
+        </p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="table-header">CONFORMES-ECR-FUA</th>
+              <th class="table-header">N° DE CONFORMES ECP</th>
+              <th class="table-header">ECP</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="table-data">29</td>
+              <td class="table-data">39</td>
+              <td class="table-data">29</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section">
+        <p class="section-title">e) RESULTADO FINAL:</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="table-header">EVALUADAS</th>
+              <th class="table-header">N° DE CONFORMES</th>
+              <th class="table-header">(FASE I + FASE II)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="table-data">70</td>
+              <td class="table-data">37</td>
+              <td class="table-data">33</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="signature-section">
+        <div class="signature-block">
+          <p class="dotted-line">________________</p>
+          <p class="signature-label">FIRMA Y SELLO DEL JEFE O RESPONSABLE</p>
+        </div>
+        <div class="signature-block">
+          <p class="dotted-line">________________</p>
+          <p class="signature-label">
+            FIRMA Y SELLO DEL PROFESIONAL SUPERVISOR
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="sheet sheet-table padding-25mm">
+      <div class="header">
+        <img
+          src="assets/header_image.png"
+          alt="Logo Ministerio de Salud"
+          class="header-image"
+        />
+      </div>
+      <h2 class="observations-title">
+        ANEXO N°1: Detalle de las observaciones del Proceso de Control
+        Prestacional Preventivo
+      </h2>
+
+      <table class="observations-table">
+        <thead>
+          <tr>
+            <th>N°</th>
+            <th>NUMERO DE FILA</th>
+            <th>COD. PRES</th>
+            <th>HISTORIA</th>
+            <th>COD. OBS</th>
+            <th>MOTIVO POR EL CUAL SE OBSERVA</th>
+            <th>RESP. DE LA OBSERVACIÓN</th>
+            <th>PERSONAL RESP. DE LA OBSERVACIÓN</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>00069198-22<br />000063904</td>
+                <td>056</td>
+                <td>81166</td>
+                <td>Ninguno</td>
+                <td>0</td>
+                <td>MEDICINA GENERAL</td>
+                <td>CARAUJAUCA EDUARDO</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>00069198-22<br />00000188</td>
+                <td>056</td>
+                <td>65925</td>
+                <td>Ninguno</td>
+                <td>0</td>
+                <td>MEDICINA GENERAL</td>
+                <td>YSLA RODRÍGUEZ JOHNNY JOAN</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>00069198-22<br />000064039</td>
+                <td>056</td>
+                <td>33362</td>
+                <td class="highlight">IIB-1</td>
+                <td>
+                  En la HC no se evidencia el registro correcto de la prestación
+                  consignada en el FUA de acuerdo a lo establecido en la normativa
+                  vigente del MINSA
+                </td>
+                <td>MEDICINA GENERAL</td>
+                <td>AMAYA FIESTAS MARÍA DOMITILA</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>00069198-22<br />00006578</td>
+                <td>056</td>
+                <td>64684</td>
+                <td class="highlight">IIA-1</td>
+                <td>No se dispone físicamente de la Historia Clínica</td>
+                <td>MEDICINA GENERAL</td>
+                <td>CARAUJAUCA EDUARDO</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>00069198-22<br />00007157</td>
+                <td>056</td>
+                <td>34076</td>
+                <td>IIB-1</td>
+                <td>
+                  En la H.C no se evidencia el registro correcto de la prestación
+                  consignada en el FUA de acuerdo a lo establecido en la normativa
+                  vigente del MINSA
+                </td>
+                <td>MEDICINA GENERAL</td>
+                <td>CHIOTTI KANESHIMA</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>00069198-22<br />00007297</td>
+                <td>056</td>
+                <td>39890</td>
+                <td>IIB-3</td>
+                <td>
+                  No hay concordancia de los diagnósticos consignados entre la
+                  Historia Clínica y FUA
+                </td>
+                <td>MEDICINA GENERAL</td>
+                <td>VALDEIGLESIAS ENRIQUE</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>00069198-22<br />00007368</td>
+                <td>056</td>
+                <td>78231</td>
+                <td>IIB-3</td>
+                <td>
+                  No hay concordancia de los diagnósticos consignados entre la
+                  Historia Clínica y FUA
+                </td>
+                <td>MEDICINA GENERAL</td>
+                <td>AMAYA FIESTAS MARÍA DOMITILA</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>00069198-22<br />00007592</td>
+                <td>056</td>
+                <td>5829</td>
+                <td>IIB-1</td>
+                <td>
+                  En la H.C no se evidencia el registro correcto de la prestación
+                  consignada en el FUA de acuerdo a lo establecido en la normativa
+                  vigente del MINSA
+                </td>
+                <td>MEDICINA GENERAL</td>
+                <td>GUTIÉRREZ CARAUJAUCA</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>00069198-22<br />000063904</td>
+                <td>056</td>
+                <td>81166</td>
+                <td>Ninguno</td>
+                <td>0</td>
+                <td>MEDICINA GENERAL</td>
+                <td>CARAUJAUCA EDUARDO</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>00069198-22<br />00000188</td>
+                <td>056</td>
+                <td>65925</td>
+                <td>Ninguno</td>
+                <td>0</td>
+                <td>MEDICINA GENERAL</td>
+                <td>YSLA RODRÍGUEZ JOHNNY JOAN</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>00069198-22<br />000064039</td>
+                <td>056</td>
+                <td>33362</td>
+                <td class="highlight">IIB-1</td>
+                <td>
+                  En la HC no se evidencia el registro correcto de la prestación
+                  consignada en el FUA de acuerdo a lo establecido en la normativa
+                  vigente del MINSA
+                </td>
+                <td>MEDICINA GENERAL</td>
+                <td>AMAYA FIESTAS MARÍA DOMITILA</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>00069198-22<br />00006578</td>
+                <td>056</td>
+                <td>64684</td>
+                <td class="highlight">IIA-1</td>
+                <td>No se dispone físicamente de la Historia Clínica</td>
+                <td>MEDICINA GENERAL</td>
+                <td>CARAUJAUCA EDUARDO</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>00069198-22<br />00007157</td>
+                <td>056</td>
+                <td>34076</td>
+                <td>IIB-1</td>
+                <td>
+                  En la H.C no se evidencia el registro correcto de la prestación
+                  consignada en el FUA de acuerdo a lo establecido en la normativa
+                  vigente del MINSA
+                </td>
+                <td>MEDICINA GENERAL</td>
+                <td>CHIOTTI KANESHIMA</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>00069198-22<br />00007297</td>
+                <td>056</td>
+                <td>39890</td>
+                <td>IIB-3</td>
+                <td>
+                  No hay concordancia de los diagnósticos consignados entre la
+                  Historia Clínica y FUA
+                </td>
+                <td>MEDICINA GENERAL</td>
+                <td>VALDEIGLESIAS ENRIQUE</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>00069198-22<br />00007368</td>
+                <td>056</td>
+                <td>78231</td>
+                <td>IIB-3</td>
+                <td>
+                  No hay concordancia de los diagnósticos consignados entre la
+                  Historia Clínica y FUA
+                </td>
+                <td>MEDICINA GENERAL</td>
+                <td>AMAYA FIESTAS MARÍA DOMITILA</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>00069198-22<br />00007592</td>
+                <td>056</td>
+                <td>5829</td>
+                <td>IIB-1</td>
+                <td>
+                  En la H.C no se evidencia el registro correcto de la prestación
+                  consignada en el FUA de acuerdo a lo establecido en la normativa
+                  vigente del MINSA
+                </td>
+                <td>MEDICINA GENERAL</td>
+                <td>GUTIÉRREZ CARAUJAUCA</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>00069198-22<br />000063904</td>
+                <td>056</td>
+                <td>81166</td>
+                <td>Ninguno</td>
+                <td>0</td>
+                <td>MEDICINA GENERAL</td>
+                <td>CARAUJAUCA EDUARDO</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>00069198-22<br />00000188</td>
+                <td>056</td>
+                <td>65925</td>
+                <td>Ninguno</td>
+                <td>0</td>
+                <td>MEDICINA GENERAL</td>
+                <td>YSLA RODRÍGUEZ JOHNNY JOAN</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>00069198-22<br />000064039</td>
+                <td>056</td>
+                <td>33362</td>
+                <td class="highlight">IIB-1</td>
+                <td>
+                  En la HC no se evidencia el registro correcto de la prestación
+                  consignada en el FUA de acuerdo a lo establecido en la normativa
+                  vigente del MINSA
+                </td>
+                <td>MEDICINA GENERAL</td>
+                <td>AMAYA FIESTAS MARÍA DOMITILA</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>00069198-22<br />00006578</td>
+                <td>056</td>
+                <td>64684</td>
+                <td class="highlight">IIA-1</td>
+                <td>No se dispone físicamente de la Historia Clínica</td>
+                <td>MEDICINA GENERAL</td>
+                <td>CARAUJAUCA EDUARDO</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>00069198-22<br />00007157</td>
+                <td>056</td>
+                <td>34076</td>
+                <td>IIB-1</td>
+                <td>
+                  En la H.C no se evidencia el registro correcto de la prestación
+                  consignada en el FUA de acuerdo a lo establecido en la normativa
+                  vigente del MINSA
+                </td>
+                <td>MEDICINA GENERAL</td>
+                <td>CHIOTTI KANESHIMA</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>00069198-22<br />00007297</td>
+                <td>056</td>
+                <td>39890</td>
+                <td>IIB-3</td>
+                <td>
+                  No hay concordancia de los diagnósticos consignados entre la
+                  Historia Clínica y FUA
+                </td>
+                <td>MEDICINA GENERAL</td>
+                <td>VALDEIGLESIAS ENRIQUE</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>00069198-22<br />00007368</td>
+                <td>056</td>
+                <td>78231</td>
+                <td>IIB-3</td>
+                <td>
+                  No hay concordancia de los diagnósticos consignados entre la
+                  Historia Clínica y FUA
+                </td>
+                <td>MEDICINA GENERAL</td>
+                <td>AMAYA FIESTAS MARÍA DOMITILA</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>00069198-22<br />00007592</td>
+                <td>056</td>
+                <td>5829</td>
+                <td>IIB-1</td>
+                <td>
+                  En la H.C no se evidencia el registro correcto de la prestación
+                  consignada en el FUA de acuerdo a lo establecido en la normativa
+                  vigente del MINSA
+                </td>
+                <td>MEDICINA GENERAL</td>
+                <td>GUTIÉRREZ CARAUJAUCA</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>00069198-22<br />000063904</td>
+                <td>056</td>
+                <td>81166</td>
+                <td>Ninguno</td>
+                <td>0</td>
+                <td>MEDICINA GENERAL</td>
+                <td>CARAUJAUCA EDUARDO</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>00069198-22<br />00000188</td>
+                <td>056</td>
+                <td>65925</td>
+                <td>Ninguno</td>
+                <td>0</td>
+                <td>MEDICINA GENERAL</td>
+                <td>YSLA RODRÍGUEZ JOHNNY JOAN</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>00069198-22<br />000064039</td>
+                <td>056</td>
+                <td>33362</td>
+                <td class="highlight">IIB-1</td>
+                <td>
+                  En la HC no se evidencia el registro correcto de la prestación
+                  consignada en el FUA de acuerdo a lo establecido en la normativa
+                  vigente del MINSA
+                </td>
+                <td>MEDICINA GENERAL</td>
+                <td>AMAYA FIESTAS MARÍA DOMITILA</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>00069198-22<br />00006578</td>
+                <td>056</td>
+                <td>64684</td>
+                <td class="highlight">IIA-1</td>
+                <td>No se dispone físicamente de la Historia Clínica</td>
+                <td>MEDICINA GENERAL</td>
+                <td>CARAUJAUCA EDUARDO</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>00069198-22<br />00007157</td>
+                <td>056</td>
+                <td>34076</td>
+                <td>IIB-1</td>
+                <td>
+                  En la H.C no se evidencia el registro correcto de la prestación
+                  consignada en el FUA de acuerdo a lo establecido en la normativa
+                  vigente del MINSA
+                </td>
+                <td>MEDICINA GENERAL</td>
+                <td>CHIOTTI KANESHIMA</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>00069198-22<br />00007297</td>
+                <td>056</td>
+                <td>39890</td>
+                <td>IIB-3</td>
+                <td>
+                  No hay concordancia de los diagnósticos consignados entre la
+                  Historia Clínica y FUA
+                </td>
+                <td>MEDICINA GENERAL</td>
+                <td>VALDEIGLESIAS ENRIQUE</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>00069198-22<br />00007368</td>
+                <td>056</td>
+                <td>78231</td>
+                <td>IIB-3</td>
+                <td>
+                  No hay concordancia de los diagnósticos consignados entre la
+                  Historia Clínica y FUA
+                </td>
+                <td>MEDICINA GENERAL</td>
+                <td>AMAYA FIESTAS MARÍA DOMITILA</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>00069198-22<br />00007592</td>
+                <td>056</td>
+                <td>5829</td>
+                <td>IIB-1</td>
+                <td>
+                  En la H.C no se evidencia el registro correcto de la prestación
+                  consignada en el FUA de acuerdo a lo establecido en la normativa
+                  vigente del MINSA
+                </td>
+                <td>MEDICINA GENERAL</td>
+                <td>GUTIÉRREZ CARAUJAUCA</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>00069198-22<br />000063904</td>
+                <td>056</td>
+                <td>81166</td>
+                <td>Ninguno</td>
+                <td>0</td>
+                <td>MEDICINA GENERAL</td>
+                <td>CARAUJAUCA EDUARDO</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>00069198-22<br />00000188</td>
+                <td>056</td>
+                <td>65925</td>
+                <td>Ninguno</td>
+                <td>0</td>
+                <td>MEDICINA GENERAL</td>
+                <td>YSLA RODRÍGUEZ JOHNNY JOAN</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>00069198-22<br />000064039</td>
+                <td>056</td>
+                <td>33362</td>
+                <td class="highlight">IIB-1</td>
+                <td>
+                  En la HC no se evidencia el registro correcto de la prestación
+                  consignada en el FUA de acuerdo a lo establecido en la normativa
+                  vigente del MINSA
+                </td>
+                <td>MEDICINA GENERAL</td>
+                <td>AMAYA FIESTAS MARÍA DOMITILA</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>00069198-22<br />00006578</td>
+                <td>056</td>
+                <td>64684</td>
+                <td class="highlight">IIA-1</td>
+                <td>No se dispone físicamente de la Historia Clínica</td>
+                <td>MEDICINA GENERAL</td>
+                <td>CARAUJAUCA EDUARDO</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>00069198-22<br />00007157</td>
+                <td>056</td>
+                <td>34076</td>
+                <td>IIB-1</td>
+                <td>
+                  En la H.C no se evidencia el registro correcto de la prestación
+                  consignada en el FUA de acuerdo a lo establecido en la normativa
+                  vigente del MINSA
+                </td>
+                <td>MEDICINA GENERAL</td>
+                <td>CHIOTTI KANESHIMA</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>00069198-22<br />00007297</td>
+                <td>056</td>
+                <td>39890</td>
+                <td>IIB-3</td>
+                <td>
+                  No hay concordancia de los diagnósticos consignados entre la
+                  Historia Clínica y FUA
+                </td>
+                <td>MEDICINA GENERAL</td>
+                <td>VALDEIGLESIAS ENRIQUE</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>00069198-22<br />00007368</td>
+                <td>056</td>
+                <td>78231</td>
+                <td>IIB-3</td>
+                <td>
+                  No hay concordancia de los diagnósticos consignados entre la
+                  Historia Clínica y FUA
+                </td>
+                <td>MEDICINA GENERAL</td>
+                <td>AMAYA FIESTAS MARÍA DOMITILA</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>00069198-22<br />00007592</td>
+                <td>056</td>
+                <td>5829</td>
+                <td>IIB-1</td>
+                <td>
+                  En la H.C no se evidencia el registro correcto de la prestación
+                  consignada en el FUA de acuerdo a lo establecido en la normativa
+                  vigente del MINSA
+                </td>
+                <td>MEDICINA GENERAL</td>
+                <td>GUTIÉRREZ CARAUJAUCA</td>
+              </tr>
+          <tr>
+            <td>1</td>
+            <td>00069198-22<br />000063904</td>
+            <td>056</td>
+            <td>81166</td>
+            <td>Ninguno</td>
+            <td>0</td>
+            <td>MEDICINA GENERAL</td>
+            <td>CARAUJAUCA EDUARDO</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>00069198-22<br />00000188</td>
+            <td>056</td>
+            <td>65925</td>
+            <td>Ninguno</td>
+            <td>0</td>
+            <td>MEDICINA GENERAL</td>
+            <td>YSLA RODRÍGUEZ JOHNNY JOAN</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>00069198-22<br />000064039</td>
+            <td>056</td>
+            <td>33362</td>
+            <td class="highlight">IIB-1</td>
+            <td>
+              En la HC no se evidencia el registro correcto de la prestación
+              consignada en el FUA de acuerdo a lo establecido en la normativa
+              vigente del MINSA
+            </td>
+            <td>MEDICINA GENERAL</td>
+            <td>AMAYA FIESTAS MARÍA DOMITILA</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>00069198-22<br />00006578</td>
+            <td>056</td>
+            <td>64684</td>
+            <td class="highlight">IIA-1</td>
+            <td>No se dispone físicamente de la Historia Clínica</td>
+            <td>MEDICINA GENERAL</td>
+            <td>CARAUJAUCA EDUARDO</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>00069198-22<br />00007157</td>
+            <td>056</td>
+            <td>34076</td>
+            <td>IIB-1</td>
+            <td>
+              En la H.C no se evidencia el registro correcto de la prestación
+              consignada en el FUA de acuerdo a lo establecido en la normativa
+              vigente del MINSA
+            </td>
+            <td>MEDICINA GENERAL</td>
+            <td>CHIOTTI KANESHIMA</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>00069198-22<br />00007297</td>
+            <td>056</td>
+            <td>39890</td>
+            <td>IIB-3</td>
+            <td>
+              No hay concordancia de los diagnósticos consignados entre la
+              Historia Clínica y FUA
+            </td>
+            <td>MEDICINA GENERAL</td>
+            <td>VALDEIGLESIAS ENRIQUE</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>00069198-22<br />00007368</td>
+            <td>056</td>
+            <td>78231</td>
+            <td>IIB-3</td>
+            <td>
+              No hay concordancia de los diagnósticos consignados entre la
+              Historia Clínica y FUA
+            </td>
+            <td>MEDICINA GENERAL</td>
+            <td>AMAYA FIESTAS MARÍA DOMITILA</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>00069198-22<br />00007592</td>
+            <td>056</td>
+            <td>5829</td>
+            <td>IIB-1</td>
+            <td>
+              En la H.C no se evidencia el registro correcto de la prestación
+              consignada en el FUA de acuerdo a lo establecido en la normativa
+              vigente del MINSA
+            </td>
+            <td>MEDICINA GENERAL</td>
+            <td>GUTIÉRREZ CARAUJAUCA</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>00069198-22<br />000063904</td>
+            <td>056</td>
+            <td>81166</td>
+            <td>Ninguno</td>
+            <td>0</td>
+            <td>MEDICINA GENERAL</td>
+            <td>CARAUJAUCA EDUARDO</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>00069198-22<br />00000188</td>
+            <td>056</td>
+            <td>65925</td>
+            <td>Ninguno</td>
+            <td>0</td>
+            <td>MEDICINA GENERAL</td>
+            <td>YSLA RODRÍGUEZ JOHNNY JOAN</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>00069198-22<br />000064039</td>
+            <td>056</td>
+            <td>33362</td>
+            <td class="highlight">IIB-1</td>
+            <td>
+              En la HC no se evidencia el registro correcto de la prestación
+              consignada en el FUA de acuerdo a lo establecido en la normativa
+              vigente del MINSA
+            </td>
+            <td>MEDICINA GENERAL</td>
+            <td>AMAYA FIESTAS MARÍA DOMITILA</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>00069198-22<br />00006578</td>
+            <td>056</td>
+            <td>64684</td>
+            <td class="highlight">IIA-1</td>
+            <td>No se dispone físicamente de la Historia Clínica</td>
+            <td>MEDICINA GENERAL</td>
+            <td>CARAUJAUCA EDUARDO</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>00069198-22<br />00007157</td>
+            <td>056</td>
+            <td>34076</td>
+            <td>IIB-1</td>
+            <td>
+              En la H.C no se evidencia el registro correcto de la prestación
+              consignada en el FUA de acuerdo a lo establecido en la normativa
+              vigente del MINSA
+            </td>
+            <td>MEDICINA GENERAL</td>
+            <td>CHIOTTI KANESHIMA</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>00069198-22<br />00007297</td>
+            <td>056</td>
+            <td>39890</td>
+            <td>IIB-3</td>
+            <td>
+              No hay concordancia de los diagnósticos consignados entre la
+              Historia Clínica y FUA
+            </td>
+            <td>MEDICINA GENERAL</td>
+            <td>VALDEIGLESIAS ENRIQUE</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>00069198-22<br />00007368</td>
+            <td>056</td>
+            <td>78231</td>
+            <td>IIB-3</td>
+            <td>
+              No hay concordancia de los diagnósticos consignados entre la
+              Historia Clínica y FUA
+            </td>
+            <td>MEDICINA GENERAL</td>
+            <td>AMAYA FIESTAS MARÍA DOMITILA</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>00069198-22<br />00007592</td>
+            <td>056</td>
+            <td>5829</td>
+            <td>IIB-1</td>
+            <td>
+              En la H.C no se evidencia el registro correcto de la prestación
+              consignada en el FUA de acuerdo a lo establecido en la normativa
+              vigente del MINSA
+            </td>
+            <td>MEDICINA GENERAL</td>
+            <td>GUTIÉRREZ CARAUJAUCA</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>00069198-22<br />000063904</td>
+            <td>056</td>
+            <td>81166</td>
+            <td>Ninguno</td>
+            <td>0</td>
+            <td>MEDICINA GENERAL</td>
+            <td>CARAUJAUCA EDUARDO</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>00069198-22<br />00000188</td>
+            <td>056</td>
+            <td>65925</td>
+            <td>Ninguno</td>
+            <td>0</td>
+            <td>MEDICINA GENERAL</td>
+            <td>YSLA RODRÍGUEZ JOHNNY JOAN</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>00069198-22<br />000064039</td>
+            <td>056</td>
+            <td>33362</td>
+            <td class="highlight">IIB-1</td>
+            <td>
+              En la HC no se evidencia el registro correcto de la prestación
+              consignada en el FUA de acuerdo a lo establecido en la normativa
+              vigente del MINSA
+            </td>
+            <td>MEDICINA GENERAL</td>
+            <td>AMAYA FIESTAS MARÍA DOMITILA</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>00069198-22<br />00006578</td>
+            <td>056</td>
+            <td>64684</td>
+            <td class="highlight">IIA-1</td>
+            <td>No se dispone físicamente de la Historia Clínica</td>
+            <td>MEDICINA GENERAL</td>
+            <td>CARAUJAUCA EDUARDO</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>00069198-22<br />00007157</td>
+            <td>056</td>
+            <td>34076</td>
+            <td>IIB-1</td>
+            <td>
+              En la H.C no se evidencia el registro correcto de la prestación
+              consignada en el FUA de acuerdo a lo establecido en la normativa
+              vigente del MINSA
+            </td>
+            <td>MEDICINA GENERAL</td>
+            <td>CHIOTTI KANESHIMA</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>00069198-22<br />00007297</td>
+            <td>056</td>
+            <td>39890</td>
+            <td>IIB-3</td>
+            <td>
+              No hay concordancia de los diagnósticos consignados entre la
+              Historia Clínica y FUA
+            </td>
+            <td>MEDICINA GENERAL</td>
+            <td>VALDEIGLESIAS ENRIQUE</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>00069198-22<br />00007368</td>
+            <td>056</td>
+            <td>78231</td>
+            <td>IIB-3</td>
+            <td>
+              No hay concordancia de los diagnósticos consignados entre la
+              Historia Clínica y FUA
+            </td>
+            <td>MEDICINA GENERAL</td>
+            <td>AMAYA FIESTAS MARÍA DOMITILA</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>00069198-22<br />00007592</td>
+            <td>056</td>
+            <td>5829</td>
+            <td>IIB-1</td>
+            <td>
+              En la H.C no se evidencia el registro correcto de la prestación
+              consignada en el FUA de acuerdo a lo establecido en la normativa
+              vigente del MINSA
+            </td>
+            <td>MEDICINA GENERAL</td>
+            <td>GUTIÉRREZ CARAUJAUCA</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>00069198-22<br />000063904</td>
+            <td>056</td>
+            <td>81166</td>
+            <td>Ninguno</td>
+            <td>0</td>
+            <td>MEDICINA GENERAL</td>
+            <td>CARAUJAUCA EDUARDO</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>00069198-22<br />00000188</td>
+            <td>056</td>
+            <td>65925</td>
+            <td>Ninguno</td>
+            <td>0</td>
+            <td>MEDICINA GENERAL</td>
+            <td>YSLA RODRÍGUEZ JOHNNY JOAN</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>00069198-22<br />000064039</td>
+            <td>056</td>
+            <td>33362</td>
+            <td class="highlight">IIB-1</td>
+            <td>
+              En la HC no se evidencia el registro correcto de la prestación
+              consignada en el FUA de acuerdo a lo establecido en la normativa
+              vigente del MINSA
+            </td>
+            <td>MEDICINA GENERAL</td>
+            <td>AMAYA FIESTAS MARÍA DOMITILA</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>00069198-22<br />00006578</td>
+            <td>056</td>
+            <td>64684</td>
+            <td class="highlight">IIA-1</td>
+            <td>No se dispone físicamente de la Historia Clínica</td>
+            <td>MEDICINA GENERAL</td>
+            <td>CARAUJAUCA EDUARDO</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>00069198-22<br />00007157</td>
+            <td>056</td>
+            <td>34076</td>
+            <td>IIB-1</td>
+            <td>
+              En la H.C no se evidencia el registro correcto de la prestación
+              consignada en el FUA de acuerdo a lo establecido en la normativa
+              vigente del MINSA
+            </td>
+            <td>MEDICINA GENERAL</td>
+            <td>CHIOTTI KANESHIMA</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>00069198-22<br />00007297</td>
+            <td>056</td>
+            <td>39890</td>
+            <td>IIB-3</td>
+            <td>
+              No hay concordancia de los diagnósticos consignados entre la
+              Historia Clínica y FUA
+            </td>
+            <td>MEDICINA GENERAL</td>
+            <td>VALDEIGLESIAS ENRIQUE</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>00069198-22<br />00007368</td>
+            <td>056</td>
+            <td>78231</td>
+            <td>IIB-3</td>
+            <td>
+              No hay concordancia de los diagnósticos consignados entre la
+              Historia Clínica y FUA
+            </td>
+            <td>MEDICINA GENERAL</td>
+            <td>AMAYA FIESTAS MARÍA DOMITILA</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>00069198-22<br />00007592</td>
+            <td>056</td>
+            <td>5829</td>
+            <td>IIB-1</td>
+            <td>
+              En la H.C no se evidencia el registro correcto de la prestación
+              consignada en el FUA de acuerdo a lo establecido en la normativa
+              vigente del MINSA
+            </td>
+            <td>MEDICINA GENERAL</td>
+            <td>GUTIÉRREZ CARAUJAUCA</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>00069198-22<br />000063904</td>
+            <td>056</td>
+            <td>81166</td>
+            <td>Ninguno</td>
+            <td>0</td>
+            <td>MEDICINA GENERAL</td>
+            <td>CARAUJAUCA EDUARDO</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>00069198-22<br />00000188</td>
+            <td>056</td>
+            <td>65925</td>
+            <td>Ninguno</td>
+            <td>0</td>
+            <td>MEDICINA GENERAL</td>
+            <td>YSLA RODRÍGUEZ JOHNNY JOAN</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>00069198-22<br />000064039</td>
+            <td>056</td>
+            <td>33362</td>
+            <td class="highlight">IIB-1</td>
+            <td>
+              En la HC no se evidencia el registro correcto de la prestación
+              consignada en el FUA de acuerdo a lo establecido en la normativa
+              vigente del MINSA
+            </td>
+            <td>MEDICINA GENERAL</td>
+            <td>AMAYA FIESTAS MARÍA DOMITILA</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>00069198-22<br />00006578</td>
+            <td>056</td>
+            <td>64684</td>
+            <td class="highlight">IIA-1</td>
+            <td>No se dispone físicamente de la Historia Clínica</td>
+            <td>MEDICINA GENERAL</td>
+            <td>CARAUJAUCA EDUARDO</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>00069198-22<br />00007157</td>
+            <td>056</td>
+            <td>34076</td>
+            <td>IIB-1</td>
+            <td>
+              En la H.C no se evidencia el registro correcto de la prestación
+              consignada en el FUA de acuerdo a lo establecido en la normativa
+              vigente del MINSA
+            </td>
+            <td>MEDICINA GENERAL</td>
+            <td>CHIOTTI KANESHIMA</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>00069198-22<br />00007297</td>
+            <td>056</td>
+            <td>39890</td>
+            <td>IIB-3</td>
+            <td>
+              No hay concordancia de los diagnósticos consignados entre la
+              Historia Clínica y FUA
+            </td>
+            <td>MEDICINA GENERAL</td>
+            <td>VALDEIGLESIAS ENRIQUE</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>00069198-22<br />00007368</td>
+            <td>056</td>
+            <td>78231</td>
+            <td>IIB-3</td>
+            <td>
+              No hay concordancia de los diagnósticos consignados entre la
+              Historia Clínica y FUA
+            </td>
+            <td>MEDICINA GENERAL</td>
+            <td>AMAYA FIESTAS MARÍA DOMITILA</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>00069198-22<br />00007592</td>
+            <td>056</td>
+            <td>5829</td>
+            <td>IIB-1</td>
+            <td>
+              En la H.C no se evidencia el registro correcto de la prestación
+              consignada en el FUA de acuerdo a lo establecido en la normativa
+              vigente del MINSA
+            </td>
+            <td>MEDICINA GENERAL</td>
+            <td>GUTIÉRREZ CARAUJAUCA</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="sheet padding-25mm">
+        <div class="header">
+            <img
+              src="assets/header_image.png"
+              alt="Logo Ministerio de Salud"
+              class="header-image"
+            />
+          </div>
+      <!-- Sección de resumen con tabla y gráfico -->
+      <div class="chart-section">
+        <div class="chart-table">
+          <h3>RESUMEN EVALUACION PRESTACIONAL</h3>
+          <table class="table-style">
+            <thead>
+              <tr>
+                <th>Evaluación</th>
+                <th>Cant</th>
+                <th>%</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Correcto</td>
+                <td>37</td>
+                <td>53%</td>
+              </tr>
+              <tr>
+                <td>Observado</td>
+                <td>33</td>
+                <td>47%</td>
+              </tr>
+              <tr class="total-row">
+                <td>Total</td>
+                <td>70</td>
+                <td>100%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Contenedor para el gráfico de dona -->
+        <div class="chart-canvas-container">
+          <h4>Resumen Evaluación Prestacional</h4>
+          <canvas id="evaluationChart" class="chart-canvas" height="100" style="height: 100px;"></canvas>
+        </div>
+      </div>
+      <div class="keys-section">
+        <h3>EVALUACION DE LAS CLAVES OBSTETRICAS</h3>
+        <table class="table-style">
+          <thead>
+            <tr>
+              <th>Clave</th>
+              <th>Estado</th>
+              <th>Faltantes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Clave roja</td>
+              <td>COMPLETO</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Clave amarilla</td>
+              <td>COMPLETO</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Clave azul</td>
+              <td>COMPLETO</td>
+              <td>0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const pageHeight = 297; // Altura de una página A4 en mm
+        const marginBottom = 10; // Margen de la parte inferior en mm
+        const sheetHeight = pageHeight - (marginBottom * 2 + 20.4602); // Altura total utilizable de la página
+
+        const tableRows = document.querySelectorAll(
+          ".observations-table tbody tr"
+        );
+        const tableHeader = document.querySelector(
+          ".observations-table thead"
+        ).innerHTML;
+
+        let currentPage = createNewPage();
+
+        tableRows.forEach((row, index) => {
+          const clonedRow = row.cloneNode(true); // Clona la fila en lugar de moverla
+          currentPage.querySelector("tbody").appendChild(clonedRow);
+
+          const currentHeight = currentPage.offsetHeight * 0.264583;
+
+          // Si la altura actual supera el límite de la página
+          if (currentHeight >= sheetHeight) {
+            // Remover el último row que provoca el overflow
+            currentPage.querySelector("tbody").removeChild(clonedRow);
+
+            // Crear nueva página y agregar la fila clonada
+            currentPage = createNewPage();
+            currentPage.querySelector("tbody").appendChild(clonedRow);
+          }
+        });
+        // Eliminar la primera hoja .sheet.sheet-table
+        const firstSheet = document.querySelector(".sheet.sheet-table");
+        if (firstSheet) {
+          firstSheet.parentNode.removeChild(firstSheet);
+        }
+
+        function createNewPage() {
+          const sheetContainer =
+            document.querySelectorAll(".sheet.sheet-table")[
+              document.querySelectorAll(".sheet.sheet-table").length - 1
+            ];
+
+          const newPage = document.createElement("section");
+          newPage.classList.add("sheet", "sheet-table", "padding-25mm");
+
+          // Clonar la cabecera y título para cada nueva hoja
+          const headerHTML = `
+      <div class="header">
+        <img src="assets/header_image.png" alt="Logo Ministerio de Salud" class="header-image" />
+      </div>
+      <h2 class="observations-title">
+        ANEXO N°1: Detalle de las observaciones del Proceso de Control Prestacional Preventivo
+      </h2>
+      <table class="observations-table">
+        <thead>${tableHeader}</thead>
+        <tbody></tbody>
+      </table>
+    `;
+          newPage.innerHTML = headerHTML;
+          sheetContainer.parentNode.insertBefore(
+            newPage,
+            sheetContainer.nextSibling
+          );
+
+          return newPage.querySelector(".observations-table");
+        }
+      });
+    </script>
+    <!-- Script de Chart.js para generar el gráfico dinámicamente -->
+    <script>
+      const ctx = document.getElementById("evaluationChart").getContext("2d");
+      const evaluationChart = new Chart(ctx, {
+        type: "doughnut",
+        data: {
+          labels: ["Correcto", "Observado"],
+          datasets: [
+            {
+              label: "Resumen Evaluación Prestacional",
+              data: [37, 33],
+              backgroundColor: ["#4CAF50", "#F44336"],
+              borderColor: ["#4CAF50", "#F44336"],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+        
+          responsive: true,
+          plugins: {
+            legend: {
+              position: "right",
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

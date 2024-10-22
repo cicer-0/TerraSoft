@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantilla Profesional Multi-hojas</title>
+    <link rel="stylesheet" href="https://unpkg.com/paper-css/paper.css">
+
+    <!-- Estilo personalizado -->
+    <style>
+        
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+        }
+
+        .header {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .header img {
+            max-width: 150px;
+            height: auto;
+        }
+
+        .content {
+            padding: 20mm;
+        }
+
+        .section {
+            margin-bottom: 20mm;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 10mm;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+
+        @page {
+            margin: 10mm;
+        }
+
+        @media print {
+            .footer {
+                position: fixed;
+                bottom: 10mm;
+            }
+        }
+    </style>
+</head>
+<body class="A4">
+
+<!-- Hoja 1 -->
+<section class="sheet padding-10mm">
+    <div class="header">
+        <img src="logo.png" alt="Logo de la empresa">
+        <h1>Nombre de la Empresa</h1>
+        <p>Dirección de la empresa | Teléfono | Correo electrónico</p>
+    </div>
+
+    <div class="content">
+        <h2>Asunto del documento</h2>
+        <div class="section">
+            <h3>Introducción</h3>
+            <p>Este es un texto de introducción. Aquí puedes agregar los antecedentes y contexto para el contenido del documento.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        Página 1 de 5
+    </div>
+</section>
+
+<!-- Hoja 2 -->
+<section class="sheet padding-10mm">
+    <div class="content">
+        <h2>Sección 1</h2>
+        <div class="section">
+            <h3>Detalle de la Sección 1</h3>
+            <p>Este es el contenido de la primera sección. Aquí puedes incluir información detallada y relevante.</p>
+        </div>
+
+        <div class="section">
+            <h3>Más Información</h3>
+            <p>Aquí puedes añadir información adicional o sub-secciones dentro de esta página.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        Página 2 de 5
+    </div>
+</section>
+
+<!-- Hoja 3 -->
+<section class="sheet padding-10mm">
+    <div class="content">
+        <h2>Sección 2</h2>
+        <div class="section">
+            <h3>Contenido de la Sección 2</h3>
+            <p>En esta página, puedes agregar información relacionada con la sección 2, explicando detalles y ejemplos.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        Página 3 de 5
+    </div>
+</section>
+
+<!-- Hoja 4 -->
+<section class="sheet padding-10mm">
+    <div class="content">
+        <h2>Sección 3</h2>
+        <div class="section">
+            <h3>Contenido de la Sección 3</h3>
+            <p>Este espacio es ideal para incluir más contenido o datos relevantes sobre la sección 3.</p>
+        </div>
+
+        <div class="section">
+            <h3>Ejemplos o Conclusiones</h3>
+            <p>Puedes usar esta sección para resaltar ejemplos prácticos o conclusiones importantes.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        Página 4 de 5
+    </div>
+</section>
+
+<!-- Hoja 5 -->
+<section class="sheet padding-10mm">
+    <div class="content">
+        <h2>Conclusiones y Recomendaciones</h2>
+        <div class="section">
+            <h3>Conclusiones</h3>
+            <p>En esta última página, escribe las conclusiones finales del documento y recomendaciones si son necesarias.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        Página 5 de 5
+    </div>
+</section>
+
+</body>
+</html>
